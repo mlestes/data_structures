@@ -1,0 +1,6 @@
+# files
+*.o
+makefile
+
+#directories
+test/
