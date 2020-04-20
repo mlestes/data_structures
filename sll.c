@@ -21,19 +21,19 @@
  * 	Returns the tail of the list.
  * 	void *tail = tailSLL(ls);
  *
- * int findItemSLL(sll_t *ls, void *item):
+ * int findByObjectSLL(sll_t *ls, void *item):
  * 	Returns the index of the item and -1 upon failure.
  * 	int index = findItemSLL(ls, item);
  *
- * void *findIndexSLL(sll_t *ls, int index):
+ * void *findByIndexSLL(sll_t *ls, int index):
  * 	Returns the item at the supplied index and NULL.
  * 	void *item = findIndexSLL(ls, index);
  *
- * void *deleteFromSLL(sll_t *ls, void *item):
+ * void *deleteByObjectSLL(sll_t *ls, void *item):
  * 	Removes the selected item from the list and returns it.
  * 	void *item = deleteFromSLL(ls, item);
  *
- * void deleteIndexSLL(sll_t *ls, int index):
+ * void deleteByIndexSLL(sll_t *ls, int index):
  * 	Removes the item at the given index and returns it.
  * 	void *item = deleteIndexSLL(ls, index);
  *
@@ -125,7 +125,7 @@ void *tailSLL(sll_t *ls){
 
 }
 
-int findItemSLL(sll_t *ls, void *item){
+int findByObjectSLL(sll_t *ls, void *item){
 
 	int index = 0;
 	if(ls == NULL) return FAIL;
@@ -140,7 +140,7 @@ int findItemSLL(sll_t *ls, void *item){
 	return index;
 }
 
-void *findIndexSLL(sll_t *ls, int index){
+void *findByIndexSLL(sll_t *ls, int index){
 
 	node *tmp = ls->node;
 	if(index > ls->size) return NULL;
@@ -150,14 +150,14 @@ void *findIndexSLL(sll_t *ls, int index){
 
 }
 
-void *deleteFromSLL(sll_t *ls, void *item){
+void *deleteByObjectSLL(sll_t *ls, void *item){
 
-	int index = findItemSLL(ls, item);
-	return deleteIndexSLL(ls, index);
+	int index = findByObjectSLL(ls, item);
+	return deleteByIndexSLL(ls, index);
 
 }
 
-void *deleteIndexSLL(sll_t *ls, int index){
+void *deleteByIndexSLL(sll_t *ls, int index){
 
 	node *tmp = ls->node; node *grd = ls->node;
 	if(index > ls->size || index == FAIL) return NULL;

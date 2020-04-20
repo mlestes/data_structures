@@ -17,10 +17,10 @@ extern sll_t *newSLL(
 extern int insertSLL(sll_t *ls, void *item);
 extern void *headSLL(sll_t *ls);
 extern void *tailSLL(sll_t *ls);
-extern int findItemSLL(sll_t *ls, void *item);
-extern void *findIndexSLL(sll_t *ls, int index);
-extern void *deleteFromSLL(sll_t *ls, void *item);
-extern void *deleteIndexSLL(sll_t *ls, int index);
+extern int findByObjectSLL(sll_t *ls, void *item);
+extern void *findByIndexSLL(sll_t *ls, int index);
+extern void *deleteByObjectSLL(sll_t *ls, void *item);
+extern void *deleteByIndexSLL(sll_t *ls, int index);
 extern int sizeSLL(sll_t *ls);
 extern int printSLL(sll_t *ls, FILE *fp);
 
