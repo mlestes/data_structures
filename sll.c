@@ -143,6 +143,7 @@ int findItemSLL(sll_t *ls, void *item){
 void *findIndexSLL(sll_t *ls, int index){
 
 	node *tmp = ls->node;
+	if(index > ls->size) return NULL;
 	int i = 0;
 	for(i = 0; i < index; i++) tmp = tmp->next;
 	return tmp->value;
@@ -159,7 +160,7 @@ void *deleteFromSLL(sll_t *ls, void *item){
 void *deleteIndexSLL(sll_t *ls, int index){
 
 	node *tmp = ls->node; node *grd = ls->node;
-	if(index > ls->size) return NULL;
+	if(index > ls->size || index == FAIL) return NULL;
 	else if(index == 0){
 		ls->node = ls->node->next;
 	}
