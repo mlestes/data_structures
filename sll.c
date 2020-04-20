@@ -22,19 +22,21 @@
  * 	void *tail = tailSLL(ls);
  *
  * int findByObjectSLL(sll_t *ls, void *item):
- * 	Returns the index of the item and -1 upon failure.
+ * 	Returns the index of the object and -1 upon failure.
  * 	int index = findItemSLL(ls, item);
  *
  * void *findByIndexSLL(sll_t *ls, int index):
- * 	Returns the item at the supplied index and NULL.
+ * 	Returns the object at the supplied index and NULL upon failure.
  * 	void *item = findIndexSLL(ls, index);
  *
  * void *deleteByObjectSLL(sll_t *ls, void *item):
- * 	Removes the selected item from the list and returns it.
+ * 	Removes the first matching object from the list and returns it or NULL 
+ * 	upon failure.
  * 	void *item = deleteFromSLL(ls, item);
  *
  * void deleteByIndexSLL(sll_t *ls, int index):
- * 	Removes the item at the given index and returns it.
+ * 	Removes the object at the given index and returns it or NULL upon 
+ * 	failure.
  * 	void *item = deleteIndexSLL(ls, index);
  *
  * int sizeSLL(sll_t *ls):
@@ -42,7 +44,7 @@
  *	int size = sizeSLL(ls);
  *
  * int printSLL(sll_t *ls, FILE *fp):
- * 	Prints each item in the list on a separate line.
+ * 	Prints each object in the list on a separate line.
  * 	printSLL(ls, stdout);
  ******************************************************************************/
 #include "sll.h"
@@ -54,11 +56,7 @@
 #ifndef __SLL_CONST__
 #define __SLL_CONST__
 
-#define TRUE 1
-#define FALSE 0
-#define GT 1
 #define EQ 0
-#define LT -1
 #define FAIL -1
 
 #endif
@@ -76,7 +74,6 @@ struct SinglyLinkedList{
 typedef struct SLLnode{
 
 	void *value;
-	int count;
 	struct SLLnode *next;
 
 } node;
@@ -194,7 +191,6 @@ node *new_node(void *v){
 
 	node *n = malloc(sizeof(node));
 	n->value = v;
-	n->count = 1;
 	n->next = 0;
 	
 	return n;
