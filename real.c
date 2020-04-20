@@ -22,7 +22,7 @@
  * 	float f = deleteReal(r);
  *
  * void setPrecisionReal(real_t *r, int p):
- * 	Sets the precision for output up to 7 decimal places.
+ * 	Sets the precision for output up to 6 decimal places.
  * 	setPrecisionReal(r, 5);
  *
  * void printReal(FILE *fp, real_t *r):
@@ -102,7 +102,7 @@ void printReal(FILE *fp, void *v){
 		fprintf(fp, "%0.5f", r->value);
 		break;
 		default:
-		fprintf(fp, "%f", r->value);
+		fprintf(fp, "%0.f", r->value);
 
 	}
 
