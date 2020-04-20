@@ -7,13 +7,15 @@
 #ifndef __DBL_H__
 #define __DBL_H__
 
+#include <stdio.h>
+
 /*** CONSTANTS ***/
 #define GREATER_THAN 1
 #define LESS_THAN -1
 #define EQUALS 0
 
 typedef struct DOUBLETYPE dbl_t;
-dbl_t *newDouble(double d);
+dbl_t *newDouble(double d, int prec);
 void setPrecision(dbl_t *dbl, int prec);
 double getDouble(dbl_t *dbl);
 double setDouble(dbl_t *dbl, double d);

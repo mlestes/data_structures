@@ -92,8 +92,8 @@ int printDouble(FILE *fp, void *dbl){
 		case 5:
 		fprintf(fp, "%0.5lf", d->value);
 		break;
-		defalut:
-		fprintf(fp, "%0.lf", d->value);
+		default:
+		fprintf(fp, "%lf", d->value);
 	}
 
 	return 0;
