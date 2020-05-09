@@ -34,10 +34,10 @@
 double my_abs(double x){return x > 0 ? x : -x;}
 double my_max(double a, double b){return a > b ? a : b;}
 double my_min(double a, double b){return a < b ? a : b;}
-int my_trunc(double x){return (int) x;}
+int my_trunc(double x){return x;}
 int my_floor(double x){
 
-	if(x > 0) return (int) x;
+	if(x > 0) return x;
 	else return x / (int) x == 1 ? x : x - 1;
 
 }
@@ -45,6 +45,6 @@ int my_floor(double x){
 int my_ceil(double x){
 
 	if(x > 0) return x / (int) x == 1 ? x : x + 1;
-	else return (int) x;
+	else return x;
 
 }
