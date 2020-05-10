@@ -35,6 +35,13 @@ double my_abs(double x){return x > 0 ? x : -x;}
 double my_max(double a, double b){return a > b ? a : b;}
 double my_min(double a, double b){return a < b ? a : b;}
 int my_trunc(double x){return x;}
+void my_pow(double *x, int exp){
+
+	double origin = *x;
+	for(int i = 1; i < exp; i++) *x = *x * origin;
+
+}
+
 int my_floor(double x){
 
 	if(x > 0) return x;

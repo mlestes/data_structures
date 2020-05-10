@@ -24,4 +24,6 @@ double my_max(double a, double b);
 //determines the minimum value
 double my_min(double a, double b);
 
+//raises a value to a power
+void my_pow(double *x, int exp);
 #endif
