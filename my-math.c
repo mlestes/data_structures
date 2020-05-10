@@ -38,7 +38,13 @@ int my_trunc(double x){return x;}
 void my_pow(double *x, int exp){
 
 	double origin = *x;
-	for(int i = 1; i < exp; i++) *x = *x * origin;
+	if(exp == 0) *x = 1;
+	else if(exp < 0){
+		*x = 1.0 / *x;
+		for(int i = 2; i < -exp; i++) *x = *x * (1.0 / origin);
+	}
+	else
+		for(int i = 1; i < exp; i++) *x = *x * origin;
 
 }
 
