@@ -14,6 +14,11 @@
  * 	float f = (float) my_abs((double) x);
  * 	double d = my_abs(x);
  *
+ * my_pow(x, exp): Power function [fpow(x, exp)]
+ * 	int a2 = (int) my_pow((double) a, exp);
+ * 	float f2 = (float) my_pow((double) f, exp);
+ * 	double d2 = my_pow(d, exp);
+ *
  * my_ceil(x): Rounds a decimal to the next integer [ceil(x)]
  * 	int c = my_ceil((double) x);
  *
@@ -35,17 +40,18 @@ double my_abs(double x){return x > 0 ? x : -x;}
 double my_max(double a, double b){return a > b ? a : b;}
 double my_min(double a, double b){return a < b ? a : b;}
 int my_trunc(double x){return x;}
-void my_pow(double *x, int exp){
+double my_pow(double x, int exp){
 
-	double origin = *x;
-	if(exp == 0) *x = 1;
+	double result = x;
+	if(exp == 0) result = 1;
 	else if(exp < 0){
-		*x = 1.0 / *x;
-		for(int i = 2; i < -exp; i++) *x = *x * (1.0 / origin);
+		result = 1.0 / x;
+		for(int i = 2; i < -exp; i++) result = result * (1.0 / x);
 	}
 	else
-		for(int i = 1; i < exp; i++) *x = *x * origin;
+		for(int i = 1; i < exp; i++) result = result * x;
 
+	return result;
 }
 
 int my_floor(double x){
