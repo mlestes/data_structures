@@ -45,8 +45,8 @@ double my_pow(double x, int exp){
 	double result = x;
 	if(exp == 0) result = 1;
 	else if(exp < 0){
-		result = 1.0 / x;
-		for(int i = 2; i < -exp; i++) result = result * (1.0 / x);
+		result = 1.0 / x; //exp = -1
+		for(int i = 1; i < -exp; i++) result = result * (1.0 / x);
 	}
 	else
 		for(int i = 1; i < exp; i++) result = result * x;
