@@ -10,6 +10,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*** CONSTANTS ***/
+#define FAIL -1
+#define EQUALS 0
+
 typedef struct SinglyLinkedList sll_t;
 extern sll_t *newSLL(
 		     void (*p)(FILE *fp, void *item),

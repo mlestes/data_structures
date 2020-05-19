@@ -52,15 +52,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*** CONSTANTS ***/
-#ifndef __SLL_CONST__
-#define __SLL_CONST__
-
-#define EQ 0
-#define FAIL -1
-
-#endif
-
 /*** STRUCTURE DEFINITION ***/
 struct SinglyLinkedList{
 
@@ -128,7 +119,7 @@ int findByObjectSLL(sll_t *ls, void *item){
 	if(ls == NULL) return FAIL;
 	else{
 		node *tmp = ls->node;
-		while(ls->comparator(tmp->value, item) != EQ){
+		while(ls->comparator(tmp->value, item) != EQUALS){
 			if(tmp->next == NULL) return FAIL;
 			index++;
 			tmp = tmp->next;
