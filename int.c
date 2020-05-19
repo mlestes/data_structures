@@ -16,8 +16,8 @@
  * 	Returns the stored value.
  * 	int i = getInt(i_t);
  *
- * void setInt(int_t *i_t, int i):
- * 	Sets a given integer to the object's value.
+ * int setInt(int_t *i_t, int i):
+ * 	Sets a given integer to the object's value and returns the old value.
  * 	setInt(i_t, i);
  *
  * printInt(FILE *fp, void *i_t):
@@ -60,8 +60,15 @@ int deleteInt(int_t *i){
 
 }
 
+int setInt(int_t *i_t, int val){
+	
+	int old = i_t->value;
+	i_t->value = val;
+	return old;
+
+}
+
 int getInt(int_t *i_t){return i_t->value;}
-void setInt(int_t *i_t, int val){i_t->value = val;}
 void printInt(FILE *fp, void *i){
 
 	int_t *i_t = (int_t *) i;

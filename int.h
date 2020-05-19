@@ -18,7 +18,7 @@ typedef struct INTEGER int_t;
 extern int_t *newInt(int i);
 extern int deleteInt(int_t *i);
 extern int getInt(int_t *i);
-extern void setInt(int_t *it, int i);
+extern int setInt(int_t *it, int i);
 extern void printInt(FILE *fp, void *i);
 extern int compareInt(void *a, void *b);
 
