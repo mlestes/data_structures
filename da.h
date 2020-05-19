@@ -2,6 +2,7 @@
 #define __DA_H__
 
 #define DEFAULT 1
+#define FAIL -1
 
 #include <stdio.h>
 #include <stdlib.h>

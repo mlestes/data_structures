@@ -39,7 +39,7 @@
  * 	int max = capacityDynamicArray(arr);
  *
  * printDynamicArray(d_arr_t *arr, FILE *fp):
- * 	Prints the array with each element braced with |. Prints "-null-" if
+ * 	Prints the array with each element braced. Prints "-null-" if
  * 	a null value is encountered.
  * 	printDynamicArray(arr, stdout);
  *
@@ -82,6 +82,7 @@ d_arr_t *newDynamicArray(int size, void (*p)(FILE *, void *)){
 
 int insertDynamicArray(d_arr_t *arr, void *item){
 
+	if(item == NULL) return FAIL;
 	if(arr->size == arr->capacity) grow_array(arr);
 	int index = arr->size++;
 	arr->array[index] = item;
@@ -117,10 +118,10 @@ void printDynamicArray(d_arr_t *arr, FILE *fp){
 
 	int i;
 	for(i = 0; i < arr->size; i++){
-		fprintf(fp, "|");
+		fprintf(fp, "[");
 		if(arr->array[i] != NULL) arr->print(fp, arr->array[i]);
 		else fprintf(fp, "-null-");
-		fprintf(fp, "|");
+		fprintf(fp, "]");
 	}
 
 }
