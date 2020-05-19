@@ -6,8 +6,7 @@
  * Function Usage:
  * newDynamicArray(int size, void (*p)(FILE *, void *)):
  * 	Creates a new dynamic array object and returns it.
- * 	d_arr_t *arr = newDynamicArray(DEFAULT, printer);
- * 	DEFAULT = 1 and is defined in da.h
+ * 	d_arr_t *arr = newDynamicArray(1, printer);
  *
  * insertDynamicArray(d_arr_t *arr, void *item):
  * 	Inserts an object into the internal array. Grows if necessary. The index
@@ -72,7 +71,7 @@ d_arr_t *newDynamicArray(int size, void (*p)(FILE *, void *)){
 		exit(-1);
 	}
 	arr->size = 0;
-	arr->capacity = size == DEFAULT ? 1 : size;
+	arr->capacity = size > 0 ? size : 1;
 	arr->array = new_array(arr->capacity);
 	arr->print = p;
 
