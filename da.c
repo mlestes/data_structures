@@ -71,9 +71,9 @@ d_arr_t *newDynamicArray(int size, void (*p)(FILE *, void *)){
 		fprintf(stderr, "Error: Failed to allocate object\n");
 		exit(-1);
 	}
-	arr->array = size == DEFAULT ? new_array(1) : new_array(size);
 	arr->size = 0;
 	arr->capacity = size == DEFAULT ? 1 : size;
+	arr->array = new_array(arr->capacity);
 	arr->print = p;
 
 	return arr;
@@ -160,12 +160,7 @@ void shrink_array(d_arr_t *arr){
 
 void reallocate_array(d_arr_t *arr){
 
-	void **tmp = malloc(sizeof(void *) * arr->capacity);
-	if(tmp == NULL){
-		fprintf(stderr, "Error: failed to allocate memory for array\n");
-		exit(-1);
-	}
-	for(int i = 0; i < arr->capacity; i++) tmp[i] = NULL;
+	void **tmp = new_array(arr->capacity);
 	int j = 0;
 	for(int i = 0; i < arr->capacity; i++)
 		if(arr->array[i] != NULL) tmp[j++] = arr->array[i];
