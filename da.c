@@ -93,6 +93,7 @@ int insertDynamicArray(d_arr_t *arr, void *item){
 
 void *setDynamicArray(d_arr_t *arr, void *item, int index){
 
+	if(item == NULL) return NULL;
 	if(index >= arr->size) return NULL;
 	void *out = arr->array[index];
 	arr->array[index] = item;
