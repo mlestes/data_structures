@@ -36,7 +36,7 @@
 
 #include "my-math.h"
 
-double my_abs(double x){return x > 0 ? x : -x;}
+double my_abs(double x){return x >= 0 ? x : -x;}
 double my_max(double a, double b){return a > b ? a : b;}
 double my_min(double a, double b){return a < b ? a : b;}
 int my_trunc(double x){return x;}
