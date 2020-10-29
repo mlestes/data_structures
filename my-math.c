@@ -42,15 +42,13 @@ double my_min(double a, double b){return a < b ? a : b;}
 int my_trunc(double x){return x;}
 double my_pow(double x, int exp){
 
-	double result = x;
-	if(exp == 0) result = 1;
-	else if(exp < 0){
-		result = 1.0 / x; //exp = -1
-		for(int i = 1; i < -exp; i++) result = result / x;
+	double result = 1;
+	if(exp > 0){
+		for(int i = 0; i < exp; ++i) result *= x;
 	}
-	else
-		for(int i = 1; i < exp; i++) result = result * x;
-
+	else if(exp < 0){
+		for(int i = 0; i < -exp; ++i) result /= x;
+	}
 	return result;
 }
 
