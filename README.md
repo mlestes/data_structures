@@ -1,14 +1,18 @@
 # data_structures
-A collection of data structures implemented in C.
+## A collection of data structures implemented in C.
 --------------------------------------------------------------------------------
-sll -  A Singly-Linked List. Takes generic objects and places them into a list.
+[sll](./sll.c) -  A Singly-Linked List. Takes generic objects and places them into a list.
 
-int -  A wrapper for the int type.
+[da](./da.c) - A Dynamic Array. Takes generic objects and places them in a dynamic array.
 
-real - A wrapper for floats.
+[int](./int.c) -  A wrapper for the int type.
 
-dbl -  A wrapper for doubles.
+[real](./real.c) - A wrapper for floats.
 
-str -  A simple string class. Current operations implemented include length 
+[dbl](./dbl.c) -  A wrapper for doubles.
+
+[str](./str.c) -  A simple string class. Current operations implemented include length 
        (sizeString()), concatenation (combineString()), and comparison
        (compareString()).
+
+[math](./my-math.c) - A group of math functions. Inputs must be cast to doubles.
