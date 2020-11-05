@@ -4,3 +4,4 @@ makefile
 
 #directories
 test/
+.git/
