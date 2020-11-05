@@ -3,6 +3,21 @@
  * AUTHOR: Murray L. Estes
  ******************************************************************************
  * Function Usages:
+ * newQueue(void (*p)(FILE *, void *)) - Creates a new queue struct
+ * 	q_t *q = newQueue(objectPrinter);
+ *
+ * enqueue(q_t *q, void *v) - Adds an object to the end of the queue
+ * 	enqueue(q, v);
+ *
+ * dequeue(q_t *q) - Removes the first object in the queue and returns it
+ * 	void *obj = dequeue(q);
+ *
+ * sizeQueue(q_t *q) - Returns how many objects are in the queue
+ * 	int count = sizeQueue(q);
+ *
+ * printQueue(q_t *q, FILE *fp) - Prints the objects in the queue via the 
+ * 				  passed stream
+ * 	printQueue(q, stdout);
  *
  ******************************************************************************/
 
