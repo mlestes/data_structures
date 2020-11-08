@@ -1,5 +1,6 @@
 # files
 *.o
+*.swp
 makefile
 
 #directories

@@ -29,6 +29,12 @@
  * sizeDLL(dll_t *ls) - Returns the number of objects in the list.
  * 	int size = sizeDLL(ls);
  *
+ * headDLL(dll_t *ls) - Returns the head of the list.
+ * 	void *hd = headDLL(ls);
+ *
+ * tailDLL(dll_t *ls) - Returns the tail of the list.
+ * 	void *tl = tailDLL(ls);
+ *
  * printDLL(dll_t *ls, FILE *fp) - Prints the list to the given stream.
  * 	printDLL(ls, stdout);
  *
@@ -151,6 +157,8 @@ void *deleteIndexDLL(dll_t *ls, int index){
 
 }
 
+void *headDLL(dll_t *ls){return ls->head->value;}
+void *tailDLL(dll_t *ls){return ls->tail->value;}
 int sizeDLL(dll_t *ls){return ls->size;}
 void printDLL(dll_t *ls, FILE *fp){
 

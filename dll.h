@@ -19,6 +19,8 @@ void *findValueDLL(dll_t *ls, int index);
 void *deleteValueDLL(dll_t *ls, void *v);
 void *deleteIndexDLL(dll_t *ls, int index);
 int sizeDLL(dll_t *ls);
+void *headDLL(dll_t *ls);
+void *tailDLL(dll_t *ls);
 void printDLL(dll_t *ls, FILE *fp);
 
 #endif
