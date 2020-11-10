@@ -10,40 +10,31 @@
  * 	sll_t *ls = newSLL(printObject, comparatorObject);
  *
  * int insertSLL(sll_t *ls, void *item):
- * 	Inserts an item to the end of the list and returns the item's index.
+ * 	Inserts an item to the end of the list and returns the item "index".
  * 	int index = insertSLL(ls, object);
  *
- * void *headSLL(sll_t *ls):
- * 	Returns the head of the list.
- * 	void *head = headSLL(ls);
- *
- * void *tailSLL(sll_t *ls):
- * 	Returns the tail of the list.
- * 	void *tail = tailSLL(ls);
- *
- * int findIndexSLL(sll_t *ls, void *item):
- * 	Returns the index of the object and -1 upon failure.
- * 	int index = findItemSLL(ls, item);
- *
- * void *findValueSLL(sll_t *ls, int index):
- * 	Returns the object at the supplied index and NULL upon failure.
- * 	void *item = findIndexSLL(ls, index);
- *
- * void *deleteValueSLL(sll_t *ls, void *item):
+ * void *deleteSLL(sll_t *ls, void *item):
  * 	Removes the first matching object from the list and returns it or NULL 
  * 	upon failure.
- * 	void *item = deleteFromSLL(ls, item);
- *
- * void deleteIndexSLL(sll_t *ls, int index):
- * 	Removes the object at the given index and returns it or NULL upon 
- * 	failure.
- * 	void *item = deleteIndexSLL(ls, index);
+ * 	void *obj = deleteFromSLL(ls, item);
  *
  * int sizeSLL(sll_t *ls):
  * 	Returns the size of the list.
- *	int size = sizeSLL(ls);
+ * 	size = sizeSLL(ls);
  *
- * int printSLL(sll_t *ls, FILE *fp):
+ * sll_node *getNodeSLL(sll_t *ls):
+ * 	Returns the underlying node structure of the list.
+ * 	sll_node *node = getNodeSLL(ls);
+ *
+ * sll_node *nextNodeSLL(sll_node *node):
+ * 	Returns the next element in the list.
+ * 	sll_node *nxt = nextNodeSLL(node);
+ *
+ * void *getNodeValueSLL(sll_node *node):
+ * 	Returns the value of the list element.
+ * 	void *obj = getNodeValueSLL(node);
+ *
+ * void printSLL(sll_t *ls, FILE *fp):
  * 	Prints each object in the list on a separate line.
  * 	printSLL(ls, stdout);
  ******************************************************************************/
@@ -53,30 +44,34 @@
 #include <stdlib.h>
 
 /*** STRUCTURE DEFINITION ***/
-struct SinglyLinkedList{
+struct SINGLE_LINKED_LIST_NODE{
 
-	struct SLLnode *node;
+	void *value;
+	struct SINGLE_LINKED_LIST_NODE *next;
+
+};
+
+struct SINGLE_LINKED_LIST_TYPE{
+
+	sll_node *node;
 	int size;
 	void (*printer)(FILE *, void *);
 	int (*comparator)(void *, void *);
 
 };
 
-typedef struct SLLnode{
-
-	void *value;
-	struct SLLnode *next;
-
-} node;
-
 /*** PRIVATE DECLARATIONS ***/
-node *new_node(void *v);
+sll_node *new_node(void *v);
 
 /*** PUBLIC DEFINITIONS ***/
 sll_t *newSLL(void (*p)(FILE *, void *), int (*c)(void *, void *)){
 	
 	sll_t *ls = malloc(sizeof(sll_t));
-	ls->node = 0;
+	if(!ls){
+		fprintf(stderr, "Error: failed to allocate memory.\n");
+		exit(FAIL);
+	}
+	ls->node = NULL;
 	ls->size = 0;
 	ls->printer = p;
 	ls->comparator = c;
@@ -87,106 +82,71 @@ sll_t *newSLL(void (*p)(FILE *, void *), int (*c)(void *, void *)){
 
 int insertSLL(sll_t *ls, void *item){
 
-	int index = 0;
-	node *temp = ls->node;
-	node *node = new_node(item);
-	if(ls->node == NULL) ls->node = node;
-	else{
-		while(temp->next != NULL){
-			temp = temp->next;
-			index++;
-		}
-		temp->next = node;
+	sll_node *n = new_node(item);
+	if(ls->node){
+		sll_node *tmp = ls->node;
+		while(tmp->next) tmp = tmp->next;
+		tmp->next = n;
 	}
-
+	else ls->node = n; //empty list
+	int index = ls->size;
 	ls->size++;
+	
 	return index;
 
 }
 
-void *headSLL(sll_t *ls){return ls->node->value;}
-void *tailSLL(sll_t *ls){
+void *deleteSLL(sll_t *ls, void *item){
 
-	node *tmp = ls->node;
-	while(tmp->next != NULL) tmp = tmp->next;
-	return tmp->value;
-
-}
-
-int findIndexSLL(sll_t *ls, void *item){
-
-	int index = 0;
-	if(ls == NULL) return FAIL;
-	else{
-		node *tmp = ls->node;
-		while(ls->comparator(tmp->value, item) != EQUALS){
-			if(tmp->next == NULL) return FAIL;
-			index++;
-			tmp = tmp->next;
-		}
-	}
-	return index;
-}
-
-void *findValueSLL(sll_t *ls, int index){
-
-	node *tmp = ls->node;
-	if(index > ls->size) return NULL;
-	int i = 0;
-	for(i = 0; i < index; i++) tmp = tmp->next;
-	return tmp->value;
-
-}
-
-void *deleteValueSLL(sll_t *ls, void *item){
-
-	int index = findIndexSLL(ls, item);
-	return deleteIndexSLL(ls, index);
-
-}
-
-void *deleteIndexSLL(sll_t *ls, int index){
-
-	node *tmp = ls->node; node *grd = ls->node;
-	//if(index > ls->size || index == FAIL) return NULL;
-	if(ls->size == 0) return NULL;
-	else if(index > ls->size) return NULL;
-	else if(index < 0) return NULL;
-	else if(index == 0){
+	sll_node *tmp = ls->node;
+	void *out;
+	if(!tmp) return NULL; //empty list
+	else if(ls->comparator(ls->node->value, item) == EQUALS){ //deleting head
+		out = ls->node->value;
 		ls->node = ls->node->next;
 	}
 	else{
-		for(int i = 0; i < index; i++) tmp = tmp->next;
-		for(int i = 0; i < index - 1; i++) grd = grd->next;
-		grd->next = tmp->next;
+		while(ls->comparator(tmp->next->value, item) != EQUALS){
+			tmp = tmp->next;
+			if(!tmp->next) return NULL;
+		}
+		out = tmp->next->value;
+		tmp->next = tmp->next->next;
 	}
-	if(ls->size)ls->size--;
-	void *item = tmp->value;
-	free(tmp);
-	return item;
+	--ls->size;
+
+	return out;
 
 }
 
 int sizeSLL(sll_t *ls){return ls->size;}
-int printSLL(sll_t *ls, FILE *fp){
+sll_node *getNodeSLL(sll_t *ls){return ls->node;}
+sll_node *nextNodeSLL(sll_node *node){return node->next;}
+void *getNodeValueSLL(sll_node *node){return node->value;}
+void printSLL(sll_t *ls, FILE *fp){
 
-	node *tmp = ls->node;
+	sll_node *tmp = ls->node;
 	while(tmp){
 		fprintf(fp, "[");
 		ls->printer(fp, tmp->value);
 		fprintf(fp, "]");
 		tmp = tmp->next;
 	}
-	return 0;
 
 }
 
-/*** PRIVATE FUNCTIONS ***/
-node *new_node(void *v){
+/*** PRIVATE FUNCTION DEFINITIONS ***/
+sll_node *new_node(void *v){
 
-	node *n = malloc(sizeof(node));
+	sll_node *n = malloc(sizeof(sll_node));
+	if(!n){
+		fprintf(stderr, "Error: failed to allocate node\n");
+		exit(FAIL);
+	}
+
 	n->value = v;
-	n->next = 0;
-	
+	n->next = NULL;
+
 	return n;
+
 }
