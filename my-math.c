@@ -1,5 +1,5 @@
 /******************************************************************************
- * my-math.c
+ * my-math.c version 1.5.0 - last updated 12 Nov 2020
  * AUTHOR: Murray Estes
  * Description: Basic math operations that are found in math library.
  *              Implemented so as to not have to link math library. Also good

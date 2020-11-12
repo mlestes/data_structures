@@ -1,3 +1,9 @@
+/******************************************************************************
+ * const.h - A list of commonly used constants.
+ * 1.0.0 - last updated 12 Nov 2020
+ * Author: Murray L. Estes
+ ******************************************************************************/
+
 #ifndef MY_CONST
 #define MY_CONST
 

@@ -1,8 +1,7 @@
 /******************************************************************************
- * real.c
+ * real.c version 1.0.0 - last updated 12 Nov 2020
  * By: Murray Estes
- * Description: A wrapper for float values. In a different repo, I have an
- * 		almost identical one using doubles.
+ * Description: A wrapper for float values.
  ******************************************************************************
  * Usage:
  * real_t *newReal(float f):

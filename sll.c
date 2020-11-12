@@ -1,5 +1,5 @@
 /******************************************************************************
- * sll.c
+ * sll.c version 1.2.0 - last updated 12 Nov 2020
  * By: Murray Estes
  * Description: Implements a generic singly-linked list. Duplicates are  
  * inserted.

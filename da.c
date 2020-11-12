@@ -1,5 +1,5 @@
 /******************************************************************************
- * da.c
+ * da.c version 1.0.0 - last updated 12 Nov 2020
  * AUTHOR: Murray Estes
  * Description: A generic object for dynamic arrays (non-circular).
  ******************************************************************************

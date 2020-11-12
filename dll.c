@@ -1,6 +1,7 @@
 /******************************************************************************
- * dll.c - Doubly Linked List
- * Murray L. Estes
+ * dll.c version 1.2.0 - last updated 12 Nov 2020
+ * Author: Murray L. Estes
+ * A generic doubly linked list
  ******************************************************************************
  * Function Usage:
  * newDLL(void *v, void (*p)(FILE *, void *), int (*c)(void *, void *)) - 

@@ -1,7 +1,7 @@
 /******************************************************************************
- * dbl.h
+ * dbl.h - A header file for a double wrapper
+ * 1.1.0 - last updated 12 Nov 2020
  * By: Murray Estes
- * Description: A header file for a wrapper for doubles.
  ******************************************************************************/
 
 #ifndef __DBL_H__

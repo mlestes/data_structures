@@ -1,7 +1,7 @@
 /******************************************************************************
- * int.h
+ * int.h - wrapper for int
+ * 1.0.0 - last updated 12 Nov 2020
  * By: Murray Estes
- * Description: A header file for a wrapper object for int types.
  ******************************************************************************/
 
 #ifndef __INT_H__

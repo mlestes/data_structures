@@ -1,5 +1,5 @@
 /******************************************************************************
- * dbl.c
+ * dbl.c version 1.0.2 - last updated 12 Nov 2020
  * By: Murray Estes
  * Description: A wrapper class for reals in double format.
  ******************************************************************************

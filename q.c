@@ -1,6 +1,7 @@
 /******************************************************************************
- * q.c - A generic queue structure
+ * q.c version 1.2.0 - last updated 12 Nov 2020
  * AUTHOR: Murray L. Estes
+ * Description: A generic queue structure
  ******************************************************************************
  * Function Usages:
  * newQueue(void (*p)(FILE *, void *)) - Creates a new queue struct

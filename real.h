@@ -1,7 +1,7 @@
 /******************************************************************************
- * real.h
+ * real.h - wrapper for float
+ * 1.0.0 - last updated 12 Nov 2020
  * By: Murray Estes
- * Description: A wrapper function for float values.
  ******************************************************************************/
 
 #ifndef __REAL_H__
@@ -9,11 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-/*** CONSTANTS ***/
-#define GREATER_THAN 1
-#define LESS_THAN -1
-#define EQUALS 0
+#include "const.h"
 
 typedef struct REALTYPE real_t;
 real_t *newReal(float f);

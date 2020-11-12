@@ -1,7 +1,7 @@
 /******************************************************************************
- * str.h
+ * str.h - header for str.c
+ * 1.0.0 - last updated 12 Nov 2020
  * By: Murray Estes
- * Description: Header file for a string class.
  ******************************************************************************/
 
 #ifndef __STR_H__

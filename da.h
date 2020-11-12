@@ -1,10 +1,15 @@
+/******************************************************************************
+ * da.h - Header for a dynamic array class
+ * 1.0.1 - last updated 12 Nov 2020
+ * Author: Murray L. Estes
+ ******************************************************************************/
+
 #ifndef __DA_H__
 #define __DA_H__
 
-#define FAIL -1
-
 #include <stdio.h>
 #include <stdlib.h>
+#include "const.h"
 
 typedef struct DynamicArray d_arr_t;
 d_arr_t *newDynamicArray(int size, void (*p)(FILE *, void *));

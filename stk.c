@@ -1,6 +1,7 @@
 /******************************************************************************
- * stk.c - A generic stack object
+ * stk.c version 1.0.0 - last updated 12 Nov 2020
  * AUTHOR: Murray L. Estes
+ * Description: A generic stack structure
  ******************************************************************************
  * Function Usage:
  * newStack(void (*p)(FILE *, void *)) - Creates a new Stack object
