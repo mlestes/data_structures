@@ -1,6 +1,6 @@
 # files
 *.o
-*.swp
+.*.swp
 makefile
 README.md
 .gitignore

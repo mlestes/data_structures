@@ -36,6 +36,7 @@ typedef struct QUEUE_NODE_TYPE {
 typedef struct QUEUE_TYPE {
 	
 	q_node *node;
+	q_node *tail;
 	int size;
 	void (*printer)(FILE *, void *);
 
@@ -52,6 +53,7 @@ q_t *newQueue(void (*p)(FILE *, void *)){
 	q_t *q = malloc(sizeof(q_t));
 	if(!q) fatal("Error: Failed to allocate memory for q_t * object\n");
 	q->node = NULL;
+	q->tail = NULL;
 	q->size = 0;
 	q->printer = p;
 
@@ -61,11 +63,14 @@ q_t *newQueue(void (*p)(FILE *, void *)){
 
 void enqueue(q_t *q, void *v){
 
-	if(!q->node) q->node = new_node(v);
+	if(!q->node){
+		q->node = new_node(v);
+		q->tail = q->node;
+	}
 	else{
-		q_node *t = q->node;
-		while(t->next) t = t->next;
+		q_node *t = q->tail;
 		t->next = new_node(v);
+		q->tail = t->next;
 	}
 	++q->size;
 
