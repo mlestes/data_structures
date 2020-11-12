@@ -9,10 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-/*** CONSTANTS ***/
-#define EQUAL 0
-#define NOT_EQUAL 1
+#include "const.h"
 
 typedef struct STRING str_t;
 str_t *newString(char *);

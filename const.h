@@ -12,6 +12,7 @@
 #define GREATER_THAN 1
 #define LESS_THAN -1
 #define EQUALS 0
+#define NOT_EQUAL 1
 #define FAIL -1
 #define SUCCESS 0
 

@@ -9,10 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#define GREATER_THAN 1
-#define EQUALS 0
-#define LESS_THAN -1
+#include "const.h"
 
 typedef struct INTEGER int_t;
 extern int_t *newInt(int i);

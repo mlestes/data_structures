@@ -110,8 +110,8 @@ void printReal(FILE *fp, void *v){
 int compareReal(void *r1, void *r2){
 
 	real_t *a = (real_t *) r1; real_t *b = (real_t *) r2;
-	if(a - b > 0) return GREATER_THAN;
-	else if(a - b < 0) return LESS_THAN;
+	if(a->value - b->value > 0) return GREATER_THAN;
+	else if(a->value - b->value < 0) return LESS_THAN;
 	else return EQUALS;
 
 }

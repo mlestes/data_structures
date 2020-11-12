@@ -8,11 +8,7 @@
 #define __DBL_H__
 
 #include <stdio.h>
-
-/*** CONSTANTS ***/
-#define GREATER_THAN 1
-#define LESS_THAN -1
-#define EQUALS 0
+#include "const.h"
 
 typedef struct DOUBLETYPE dbl_t;
 dbl_t *newDouble(double d, int prec);

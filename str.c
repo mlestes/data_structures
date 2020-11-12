@@ -107,7 +107,7 @@ int compareString(void *s1, void *s2){
 			if(a->string[i] != b->string[i]) return NOT_EQUAL;
 	}
 
-	return EQUAL;
+	return EQUALS;
 
 }
 
