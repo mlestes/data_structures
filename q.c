@@ -44,7 +44,6 @@ typedef struct QUEUE_TYPE {
 
 /*** PRIVATE FUNCTION DECLARATIONS ***/
 q_node *new_node(void *v);
-int insert_node(q_node *n, void *v);
 void fatal(char *fmt, ...);
 
 /*** PUBLIC FUNCTION DEFINITIONS ***/
@@ -108,18 +107,6 @@ q_node *new_node(void *v){
 	n->next = NULL;
 
 	return n;
-
-}
-
-int insert_node(q_node *n, void *v){
-
-	q_node *end = new_node(v);
-	if(!end) return FAIL;
-	q_node *t = n;
-	while(t->next) t = t->next;
-	end = t->next;
-
-	return SUCCESS;
 
 }
 
