@@ -1,5 +1,5 @@
 /******************************************************************************
- * dll.c version 1.2.0 - last updated 12 Nov 2020
+ * dll.c version 1.2.1 - last updated 16 Nov 2020
  * Author: Murray L. Estes
  * A generic doubly linked list
  ******************************************************************************
@@ -110,8 +110,9 @@ void *deleteDLL(dll_t *ls, void *v){
 
 	dll_node *tmp = ls->node;
 	void *out;
+	if(ls->size == 0) return NULL;
 	//head is deleted
-	if(ls->comparator(tmp->value, v) == EQUALS){
+	else if(ls->comparator(tmp->value, v) == EQUALS){
 		out = tmp->value;
 		ls->node = tmp->next;
 		ls->head = ls->node;
@@ -139,9 +140,9 @@ int sizeDLL(dll_t *ls){return ls->size;}
 dll_node *getNodeDLL(dll_t *ls){return ls->node;}
 dll_node *headDLL(dll_t *ls){return ls->head;}
 dll_node *tailDLL(dll_t *ls){return ls->tail;}
-dll_node *nextNodeDLL(dll_node *n){return n->next;}
-dll_node *prevNodeDLL(dll_node *n){return n->prev;}
-void *getNodeValueDLL(dll_node *n){return n->value;}
+dll_node *nextNodeDLL(dll_node *n){return n ? n->next : NULL;}
+dll_node *prevNodeDLL(dll_node *n){return n ? n->prev : NULL;}
+void *getNodeValueDLL(dll_node *n){return n ? n->value : NULL;}
 void printDLL(dll_t *ls, FILE *fp){
 
 	dll_node *tmp = ls->node;

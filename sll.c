@@ -1,5 +1,5 @@
 /******************************************************************************
- * sll.c version 1.2.0 - last updated 12 Nov 2020
+ * sll.c version 1.2.1 - last updated 16 Nov 2020
  * By: Murray Estes
  * Description: Implements a generic singly-linked list. Duplicates are  
  * inserted.
@@ -98,14 +98,16 @@ int insertSLL(sll_t *ls, void *item){
 
 void *deleteSLL(sll_t *ls, void *item){
 
-	sll_node *tmp = ls->node;
 	void *out;
-	if(!tmp) return NULL; //empty list
+	sll_node *tmp;
+	if(ls->size == 0) return NULL; //empty list
 	else if(ls->comparator(ls->node->value, item) == EQUALS){ //deleting head
+		tmp = ls->node;
 		out = ls->node->value;
 		ls->node = ls->node->next;
 	}
 	else{
+		tmp = ls->node;
 		while(ls->comparator(tmp->next->value, item) != EQUALS){
 			tmp = tmp->next;
 			if(!tmp->next) return NULL;
@@ -121,8 +123,8 @@ void *deleteSLL(sll_t *ls, void *item){
 
 int sizeSLL(sll_t *ls){return ls->size;}
 sll_node *getNodeSLL(sll_t *ls){return ls->node;}
-sll_node *nextNodeSLL(sll_node *node){return node->next;}
-void *getNodeValueSLL(sll_node *node){return node->value;}
+sll_node *nextNodeSLL(sll_node *node){return node ? node->next : NULL;}
+void *getNodeValueSLL(sll_node *node){return node ? node->value : NULL;}
 void printSLL(sll_t *ls, FILE *fp){
 
 	sll_node *tmp = ls->node;
